@@ -367,6 +367,7 @@ button.add-job {
     overflow-y: auto;
     flex: 3;
     padding: 60px;
+	display:none;
 }
 
 .invoice-info-wrap {

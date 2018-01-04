@@ -25,11 +25,11 @@ $styleRes	= mysqli_query($con,"SELECT * FROM order_details");
 $i=0;
  while($styleResVal	= mysqli_fetch_assoc($styleRes)){
  //print_r($styleResVal);	 
-	  $data_array[$i] ['firstname'] = $styleResVal["firstname"]; 
+	    $data_array[$i] ['firstname'] = ucfirst($styleResVal["firstname"]);  
 	  $data_array[$i] ['lastName'] = $styleResVal["lastname"]; 
 	  $data_array[$i] ['order_status'] = "Order Processing"; 
-	  $data_array[$i] ['trialDate'] = date("d-M-Y", strtotime($styleResVal["trial_date"])); 
-	  $data_array[$i] ['deliveryDate'] = date("d-M-Y", strtotime($styleResVal["delivery_date"])); 
+	  $data_array[$i] ['trialDate'] = date("d-M-y", strtotime($styleResVal["trial_date"])); 
+	  $data_array[$i] ['deliveryDate'] = date("d-M-y", strtotime($styleResVal["delivery_date"])); 
 	  $data_array[$i] ['order_no']= "TINV-".sprintf('%04d', $styleResVal['order_no']);
 	  $i++;
  }

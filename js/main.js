@@ -128,11 +128,28 @@ $('#jobForm').keyup(function(ev){
 
 
 });
+
+
 		// onload listing pageX
 			function listing_info(){				 
 				$.ajax({ url: "listing_info.php",						
 						success: function(response){
-							console.log(response);
+							 
+							var jobList=JSON.parse(response);
+									var listWrap = "";		
+									for (var i = 0; i < jobList.length; i++) {
+											listWrap += '<li>\
+															<div class="job-details">\
+																<p class="customer-name">'+ jobList[i].firstname +' '+ jobList[i].lastName +' </p>\
+																<p class="bill-no"> Job Order# '+ jobList[i].order_no +'</p>\
+															</div>\
+															<div class="job-status">\
+																<p class="job-amount">Del Date : '+ jobList[i].deliveryDate +' </p>\
+																<p class="job-badge">'+ jobList[i].order_status +'</p>\
+															</div>\
+														</li>';
+										$(".job-list-bottom ul").html(listWrap);
+									}
 						  // alert("done");
 						}});
 					}
